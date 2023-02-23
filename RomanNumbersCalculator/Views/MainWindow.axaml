@@ -1,0 +1,166 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RomanNumbersCalculator.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="400"
+		MinWidth="350"
+		MinHeight="500"
+		Width="400"
+		Height="600"
+        x:Class="RomanNumbersCalculator.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+		WindowStartupLocation="CenterScreen"
+		Padding="5"
+        Title="RomanNumbersCalculator">
+		
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Window.Styles>
+		<Style Selector="Button.CalculatorButton">
+			<Setter Property="FontSize" Value="25" />
+			<Setter Property="VerticalAlignment" Value="Stretch" />
+			<Setter Property="HorizontalAlignment" Value="Stretch" />
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="VerticalContentAlignment" Value="Center" />
+			<Setter Property="BorderBrush" Value="Gray" />
+			<Setter Property="BorderThickness" Value="2" />
+			<Setter Property="CornerRadius" Value="2" />
+		</Style>
+		<Style Selector="TextBlock.ResultTextBox">
+			<Setter Property="FontSize" Value="60" />
+			<Setter Property="VerticalAlignment" Value="Center" />
+			<Setter Property="TextAlignment" Value="Right" />
+		</Style>
+	</Window.Styles>
+
+	<Grid ColumnDefinitions="*, *, *, *" RowDefinitions="*, *, *, *, *">
+		<Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="4">
+			<TextBlock
+				Name="ResultTextBox"
+				Classes="ResultTextBox"
+				Grid.ColumnSpan="4"
+				Text="{Binding CurrentNumberStringRepresentation}"
+			/>
+		</Border>
+		
+		<Button
+			Grid.Column="0"
+			Grid.Row="1"
+			Classes="CalculatorButton"
+		    Name="I"
+			Content="I"
+			Command="{Binding AddNumber}"
+			CommandParameter="I"
+		/>
+		<Button
+			Grid.Row="1"
+			Grid.Column="1"
+			Classes="CalculatorButton"
+		    Name="C"
+			Content="C"
+			Command="{Binding AddNumber}"
+			CommandParameter="C"
+		/>
+		<Button
+			Grid.Row="1"
+			Grid.Column="2"
+			Classes="CalculatorButton"
+		    Name="Plus"
+			Content="+"
+			Command="{Binding PlusCommand}"
+		/>
+
+		<Button
+			Grid.Row="2"
+			Classes="CalculatorButton"
+		    Name="V"
+			Content="V"
+			Command="{Binding AddNumber}"
+			CommandParameter="V"
+		/>
+		<Button
+			Grid.Row="2"
+			Grid.Column="1"
+			Classes="CalculatorButton"
+		    Name="D"
+			Content="D"
+			Command="{Binding AddNumber}"
+			CommandParameter="D"
+		/>
+		<Button
+			Grid.Row="2"
+			Grid.Column="2"
+			Classes="CalculatorButton"
+		    Name="Minus"
+			Content="-"
+			Command="{Binding SubCommand}"
+		/>
+
+		<Button
+			Grid.Row="3"
+			Classes="CalculatorButton"
+		    Name="X"
+			Content="X"
+			Command="{Binding AddNumber}"
+			CommandParameter="X"
+		/>
+		<Button
+			Grid.Row="3"
+			Grid.Column="1"
+			Classes="CalculatorButton"
+		    Name="M"
+			Content="M"
+			Command="{Binding AddNumber}"
+			CommandParameter="M"
+		/>
+		<Button
+			Grid.Row="1"
+			Grid.Column="3"
+			Classes="CalculatorButton"
+		    Name="Multiply"
+			Content="*"
+			Command="{Binding MulCommand}"
+		/>
+
+		<Button
+			Grid.Row="4"
+			Classes="CalculatorButton"
+		    Name="L"
+			Content="L"
+			Command="{Binding AddNumber}"
+			CommandParameter="L"
+		/>
+		<Button
+			Grid.Row="4"
+			Grid.Column="1"
+			Classes="CalculatorButton"
+		    Name="CE"
+			Content="CE"
+			Command="{Binding ResetCommand}"
+		/>
+		<Button
+			Grid.Row="2"
+			Grid.Column="3"
+			Classes="CalculatorButton"
+		    Name="Divide"
+			Content="/"
+			Command="{Binding DivCommand}"
+		/>
+
+		<Button
+			Grid.Row="3"
+			Grid.Column="2"
+			Grid.RowSpan="2"
+			Grid.ColumnSpan="2"
+			Classes="CalculatorButton"
+		    Name="Equal"
+			Content="="
+			Command="{Binding CalculateCommand}"
+		/>
+
+	</Grid>
+
+</Window>
